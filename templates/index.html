@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename="style.css") }}">
+    <title>consumindo api cep</title>
+</head>
+<body>
+    <form class="formulario" action="/" method="post">
+       <h1>Busca CEP</h1>
+       <input class="campo-cep" type="number" name="cep" id="cep" placeholder="Informe seu cep">
+       <br>
+       <input class="botao" type="submit" value="procurar">
+    </form>
+    <div class="informacoes">
+    {% if data and "cep" in data %}
+        <p>Cep: {{ data["cep"] }}</p>
+        <p>Cidade: {{ data["localidade"] }}/{{ data["uf"] }}</p>
+        <p>Rua: {{ data["logradouro"] }}</p>
+        <p>Complemento: {{ data["complemento"] }}</p>
+        <p>Bairro: {{ data["bairro"] }}</p>
+        <p>ddd: {{ data["ddd"] }}</p>
+    {% endif %}
+</div>
+</body>
+</html>
